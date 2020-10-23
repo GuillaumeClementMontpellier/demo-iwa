@@ -20,8 +20,14 @@ dependencies {
 
 	implementation 'org.postgresql:postgresql'
 
+	implementation 'org.springframework.boot:spring-boot-starter-jetty'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+}
+
+configurations.implementation {
+	exclude module: "spring-boot-starter-tomcat"
 }
 
 test {

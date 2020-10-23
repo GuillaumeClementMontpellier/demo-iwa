@@ -1,7 +1,6 @@
 package fr.polytech.demo.controllers;
 
 import fr.polytech.demo.models.Location;
-import fr.polytech.demo.models.User;
 import fr.polytech.demo.repositories.LocationRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
