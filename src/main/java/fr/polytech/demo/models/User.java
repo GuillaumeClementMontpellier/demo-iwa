@@ -7,12 +7,15 @@ import java.util.List;
 
 @Entity(name = "users")
 @Access(AccessType.FIELD)
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long user_id;
+    private String username;
+
+    private String password;
+
+    private boolean enabled;
 
     private String first_name;
 
@@ -22,21 +25,11 @@ public class User {
 
     private String phone_number;
 
-    private String password;
-
     @ManyToMany
     @JoinTable(name = "user_locations",
-            joinColumns = @JoinColumn(name = "user_id"),
+            joinColumns = @JoinColumn(name = "username"),
             inverseJoinColumns = @JoinColumn(name = "location_id"))
     private List<Location> locations;
-
-    public long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
-    }
 
     public String getFirst_name() {
         return first_name;
@@ -84,5 +77,21 @@ public class User {
 
     public void setLocations(List<Location> locations) {
         this.locations = locations;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
