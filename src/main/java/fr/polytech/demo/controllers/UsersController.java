@@ -23,7 +23,7 @@ public class UsersController {
 
     @GetMapping
     @RequestMapping("{id}")
-    public User get(@PathVariable Long id) {
+    public User get(@PathVariable String id) {
         if (userRepository.findById(id).isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with ID " + id + " not found");
         }
@@ -37,14 +37,14 @@ public class UsersController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable String id) {
         // Toujours verifier s'il faut supprimer aussi
         // les enregistrements enfants
         userRepository.deleteById(id);
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.PUT)
-    public User update(@PathVariable Long id, @RequestBody User user) {
+    public User update(@PathVariable String id, @RequestBody User user) {
         // TODO: Ajouter ici une validation si tous
         // les champs ont ete passes
         // Sinon, retourner une erreur 400 (Bad Payload)

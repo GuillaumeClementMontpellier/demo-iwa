@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS persistent_logins;
 DROP TABLE IF EXISTS authorities;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS locations;
+DROP TABLE IF EXISTS verif_tokens;
 
 CREATE TABLE users(
     username varchar(50) NOT NULL PRIMARY KEY,
@@ -39,4 +40,10 @@ CREATE TABLE persistent_logins(
  series varchar(64) PRIMARY KEY,
  token varchar(64) NOT NULL,
  last_used timestamp NOT NULL
-)
+);
+
+CREATE TABLE verif_tokens(
+ token varchar(50) NOT NULL PRIMARY KEY,
+ username varchar(64) ,
+ expiry_date timestamp without time zone NOT NULL
+);
